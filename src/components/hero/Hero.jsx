@@ -16,8 +16,9 @@ const Hero = () => {
   }, []);
 
   const settings = {
+    dots: true,
     infinite: true,
-    speed: 1500,
+    speed: 1000,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
@@ -32,37 +33,24 @@ const Hero = () => {
   const heroContentStyle = 'text-center text-white';
 
   return (
-    <Slider {...settings}>
-      {data.slice(0, 3).map((dat) => (
-        <section className='relative ' key={dat.id}>
-          <div
-            className='absolute inset-0'
-            style={{
-              backgroundImage: `url(https://image.tmdb.org/t/p/original/${dat?.backdrop_path})`,
-              backgroundPosition: 'center',
-              backgroundSize: 'cover',
-            }}
-          ></div>
-          <div className='relative z-10'>
-            <div
-              className={`container mx-auto py-12 lg:py-32 ${heroContentStyle}`}
-            >
-              <h1 className='text-5xl font-bold'>{dat?.title}</h1>
-              <p className='mt-4 text-lg'>{dat?.overview}</p>
-              <div className='flex justify-center items-center mt-6'>
-                <Link to='/login'>
-                  <button className='bg-white text-gray-900 py-2 px-4 rounded-lg mr-4 hover:bg-[tomato]'>
-                    Get Started
-                  </button>
-                </Link>
+    <section className='relative '>
+      <div className='absolute inset-0' style={backgroundStyle}></div>
+      <div className='relative z-10'>
+        <div className={`container mx-auto py-12 lg:py-32 ${heroContentStyle}`}>
+          <h1 className='text-5xl font-bold'>{data[1]?.title}</h1>
+          <p className='mt-4 text-lg'>{data[1]?.overview}</p>
+          <div className='flex justify-center items-center mt-6'>
+            <Link to='/login'>
+              <button className='bg-white text-gray-900 py-2 px-4 rounded-lg mr-4 hover:bg-[tomato]'>
+                Get Started
+              </button>
+            </Link>
 
-                <FaPlay className='text-[#121212] text-4xl' />
-              </div>
-            </div>
+            <FaPlay className='text-[#121212] text-4xl' />
           </div>
-        </section>
-      ))}
-    </Slider>
+        </div>
+      </div>
+    </section>
   );
 };
 
