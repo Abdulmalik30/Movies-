@@ -1,53 +1,23 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { axiosPrivate } from '../../api/axios';
 import useAuth from '../../hooks/useAuth';
-import axios from 'axios';
+
 const UserHome = () => {
-  const { auth } = useAuth();
-  useEffect(() => {
-    console.log(auth);
-    const getUserDetails = async () => {
-      const response = await axiosPrivate.get('/user', {
-        headers: {
-          Authorization: `Bearer ${auth.accessToken}`,
-        },
-      });
+  const { auth, setAuth } = useAuth();
 
-      console.log(response);
-    };
-    getUserDetails();
-  }, [auth]);
-
-  const handleRefresh = async () => {
-    // const config = {
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //     'Access-Control-Allow-Origin': 'http://127.0.0.1:5173',
-    //     'Access-Control-Allow-Credentials': 'true',
-    //   },
-    //   withCredentials: true,
-    // };
-
-    try {
-      const response = await axios.get(
-        'http://localhost:5000/refresh',
-        {
-          withCredentials: true,
-          credentials: 'include',
-        }
-      );
-      const accessToken = response.data;
-      return accessToken;
-    } catch (error) {
-      console.error(error);
-      throw new Error('Failed to refresh access token');
-    }
+  const getUser = async () => {
+    const response = await axiosPrivate.get('/user');
+    console.log(response.data);
   };
-
+  // useEffect(() => {
+  //   const accessToken = localStorage.getItem('token');
+  //   setAuth({ accessToken });
+  //   getUser();
+  // }, []);
   return (
     <div>
-      <h1>user</h1>
-      <button onClick={() => handleRefresh()}>refresh</button>
+      <p>user</p>
+      <button onClick={getUser}>get user</button>
     </div>
   );
 };

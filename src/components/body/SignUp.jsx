@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import useData from '../../hooks/useData';
 const SignUp = () => {
+  const { handleRegister } = useData();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
@@ -47,7 +49,10 @@ const SignUp = () => {
 
   return (
     <div className='flex justify-center items-center h-screen bg-[#191818] text-white'>
-      <form className='bg-transparent border border-tomato rounded-lg shadow-md p-8  w-[400px]'>
+      <form
+        className='bg-transparent border border-tomato rounded-lg shadow-md p-8  w-[400px]'
+        onSubmit={(e) => handleRegister(e)}
+      >
         <div className='flex flex-col mb-4'>
           <label htmlFor='username' className='sr-only'>
             Username

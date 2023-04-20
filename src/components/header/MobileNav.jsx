@@ -21,7 +21,7 @@ const MobileNav = () => {
 
   const navVarient = {
     hidden: {
-      x: '200vw',
+      x: '100vw',
       opacity: 0,
     },
     visible: {
@@ -44,7 +44,7 @@ const MobileNav = () => {
               initial='hidden'
               animate='visible'
               exit={{
-                x: '200vw',
+                x: '100vw',
                 opacity: 0,
                 transition: { duration: 1, type: 'tween' },
               }}

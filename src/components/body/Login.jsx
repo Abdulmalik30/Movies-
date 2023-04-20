@@ -1,8 +1,17 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import useData from '../../hooks/useData';
+import Loader from '../Loader';
 const Login = () => {
-  const { handleLogin, email, setEmail, password, setPassword } = useData();
+  const {
+    handleLogin,
+    email,
+    setEmail,
+    password,
+    setPassword,
+    errMsg,
+    isLoading,
+  } = useData();
 
   return (
     <div className='flex justify-center items-center h-screen bg-[#191818] text-white'>
@@ -11,6 +20,8 @@ const Login = () => {
         onSubmit={(e) => handleLogin(e)}
       >
         <div className='flex flex-col mb-4'>
+          <p className='w-full mx-auto text-red-600 p-3'>{errMsg}</p>
+
           <label htmlFor='email' className='sr-only'>
             Email
           </label>
@@ -68,6 +79,7 @@ const Login = () => {
           remember me
         </label>
       </form>
+      {isLoading && <Loader />}
     </div>
   );
 };
