@@ -4,7 +4,6 @@ import Hero from '../hero/Hero';
 const Home = () => {
   return (
     <main>
-      <h1>home</h1>
       <Hero />
     </main>
   );
