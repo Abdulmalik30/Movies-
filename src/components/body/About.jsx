@@ -1,11 +1,7 @@
 import React from 'react';
-
+import Loader from '../Loader';
 const About = () => {
-  return (
-    <div>
-      <h1>about</h1>
-    </div>
-  );
+  return <></>;
 };
 
 export default About;

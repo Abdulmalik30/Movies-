@@ -9,6 +9,7 @@ import SignUp from './components/body/SignUp';
 import UserHome from './components/private/UserHome';
 import Layout from './Layout';
 import RequireAuth from './RequireAuth';
+import UserLayout from './UserLayout';
 
 const App = () => {
   return (
@@ -22,8 +23,10 @@ const App = () => {
       <Route path='sign-up' element={<SignUp />} />
       <Route path='login' element={<Login />} />
 
-      <Route element={<RequireAuth />}>
-        <Route path='/user' element={<UserHome />} />
+      <Route path='/user' element={<UserLayout />}>
+        <Route element={<RequireAuth />}>
+          <Route index element={<UserHome />} />
+        </Route>
       </Route>
     </Routes>
 

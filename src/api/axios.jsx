@@ -3,12 +3,12 @@ import useCheckAuth from '../hooks/useCheckAuth';
 import useAuth from '../hooks/useAuth';
 
 export default axios.create({
-  baseURL: 'http://localhost:5000',
+  baseURL: 'https://movie1.onrender.com',
 });
 
 export const axiosPrivate = axios.create(
   {
-    baseURL: 'http://localhost:5000',
+    baseURL: 'https://movie1.onrender.com',
   },
   {
     headers: { 'Content-Type': 'application/json' },
