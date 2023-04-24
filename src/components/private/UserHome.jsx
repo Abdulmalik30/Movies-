@@ -31,7 +31,7 @@ const UserHome = () => {
   return (
     <main className='grid grid-cols-3 gap-3'>
       {movies.map((movie) => (
-       <MovieMap />
+        <MovieMap movie={movie} />
       ))}
       {isLoading && <SkeletonLoader />}
     </main>

@@ -1,6 +1,8 @@
 import React from 'react';
+import useData from '../../hooks/useData';
 
 const MovieMap = ({ movie }) => {
+  const { imgPath } = useData();
   return (
     <article key={movie.id} className='h-45 w-45'>
       <img
