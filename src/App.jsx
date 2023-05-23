@@ -10,6 +10,7 @@ import UserHome from './components/private/UserHome';
 import Layout from './Layout';
 import RequireAuth from './RequireAuth';
 import UserLayout from './UserLayout';
+import MovieDetails from './components/private/MovieDetails';
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const App = () => {
       <Route path='/user' element={<UserLayout />}>
         <Route element={<RequireAuth />}>
           <Route index element={<UserHome />} />
+          <Route path='/user/movie/:id' element={<MovieDetails />} />
         </Route>
       </Route>
     </Routes>

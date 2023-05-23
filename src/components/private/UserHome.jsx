@@ -4,13 +4,12 @@ import { useNavigate } from 'react-router-dom';
 import { axiosApi, axiosPrivate } from '../../api/axios';
 import useAuth from '../../hooks/useAuth';
 import useData from '../../hooks/useData';
-import SkeletonLoader from '../../Skeleton';
+import SkeletonLoader from '../../SkeletonLoader';
 import MovieMap from './MovieMap';
 
 const UserHome = () => {
   const { auth, setAuth } = useAuth();
-  const { movies, setMovies, imgPath, isLoading, setIsLoading, searchValue } =
-    useData();
+  const { movies, setMovies, isLoading, setIsLoading } = useData();
   const navigate = useNavigate();
   const getMovies = async () => {
     try {
@@ -21,7 +20,7 @@ const UserHome = () => {
       console.log(movies);
     } catch (error) {
       console.log(error);
-      setIsLoading(false);
+      // setIsLoading(false);
     }
   };
   useEffect(() => {
@@ -29,11 +28,16 @@ const UserHome = () => {
   }, []);
 
   return (
-    <main className='grid grid-cols-3 gap-3'>
+    <main
+      className={`grid grid-cols-1 md:grid-cols-2  py-1 lg:grid-cols-3 gap-3  ${
+        movies.length ? 'h-max' : 'h-screen'
+      }`}
+    >
       {movies.map((movie) => (
-        <MovieMap movie={movie} />
+        <MovieMap movie={movie} key={movie.id} />
       ))}
-      {isLoading && <SkeletonLoader />}
+      {isLoading &&
+        [...Array(10).keys()].map((i) => <SkeletonLoader key={i} />)}
     </main>
   );
 };

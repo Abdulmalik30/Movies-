@@ -1,29 +1,42 @@
 import React from 'react';
-import { FaArrowRight, FaArrowsAlt, FaLongArrowAltRight } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+
 const UserAside = () => {
+  const location = useLocation();
   return (
-    <div className='col-span-2  h-full bg-black border-r text-white flex flex-col justify-between py-4 px-2'>
+    <div className=' h-screen w-full bg-black border-r text-white flex-col justify-between py-4 px-2 hidden md:flex'>
       <ul className='flex flex-col'>
         <li className='flex justify-between items-center'>
-          <Link to='#' className='my-2 hover:text-gray-300 mx-2'>
-            Link 1
+          <Link
+            to='/user'
+            className={`${
+              location.pathname === '/user' ? 'text-[tomato]' : 'inherit'
+            }`}
+          >
+            Trending
           </Link>
-          <FaLongArrowAltRight className='text-1xl mx-2' />
         </li>
 
         <li className='flex justify-between items-center'>
-          <Link to='#' className='my-2 hover:text-gray-300 mx-2'>
-            Link 2
+          <Link
+            to='/user'
+            className={`${
+              location.pathname === '/on-the-air' ? 'text-[tomato]' : 'inherit'
+            }`}
+          >
+            On the air
           </Link>
-          <FaLongArrowAltRight className='text-1xl mx-2' />
         </li>
 
         <li className='flex justify-between items-center'>
-          <Link to='#' className='my-2 hover:text-gray-300 mx-2'>
-            Link 3
+          <Link
+            to='/user'
+            className={`${
+              location.pathname === '/watchlist' ? 'text-[tomato]' : 'inherit'
+            }`}
+          >
+            watchlist
           </Link>
-          <FaLongArrowAltRight className='text-1xl mx-2' />
         </li>
       </ul>
       <div>

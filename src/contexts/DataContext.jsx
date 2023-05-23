@@ -1,6 +1,6 @@
 import { createContext, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import axios, { axiosPrivate } from '../api/axios';
+import axios, { axiosApi, axiosPrivate } from '../api/axios';
 import useAuth from '../hooks/useAuth';
 const DataContext = createContext({});
 
@@ -20,10 +20,10 @@ export const DataProvider = ({ children }) => {
   const [errMsg, setErrMsg] = useState('');
 
   const handleSearch = async (e) => {
-    const response = await axios.get(
+    const response = await axiosApi.get(
       `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${searchValue}`
     );
-    setMovies(response.data.results);
+    console.log(response.data.results);
   };
 
   const handleLogin = async (e) => {

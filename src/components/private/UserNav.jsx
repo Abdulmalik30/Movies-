@@ -5,7 +5,7 @@ import useData from '../../hooks/useData';
 const UserNav = () => {
   const { searchValue, handleSearch, setSearchValue } = useData();
   return (
-    <nav className='w-full h-20 flex gap-2  bg-black justify-between items-center'>
+    <nav className=' flex gap-2 h-full  bg-black justify-between items-center '>
       <h1>LOGO</h1>
       <div className='flex items-center justify-start'>
         <FaSearch

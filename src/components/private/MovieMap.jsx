@@ -1,16 +1,21 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import useData from '../../hooks/useData';
 
 const MovieMap = ({ movie }) => {
   const { imgPath } = useData();
   return (
-    <article key={movie.id} className='h-45 w-45'>
-      <img
-        src={`${imgPath}/${movie.poster_path}`}
-        alt={`${movie.title} image`}
-      />
-      <small>{movie.title}</small>
-    </article>
+    <Link to={`/user/movie/${movie.id}`}>
+      <article className=' flex flex-col '>
+        <img
+          src={`${imgPath}/${movie.poster_path}`}
+          alt={`${movie.title} image`}
+        />
+        <div className=' bg-[#f3e8e8] text-black p-6 w-full shadow-sm'>
+          <small>{movie.title}</small>
+        </div>
+      </article>
+    </Link>
   );
 };
 
