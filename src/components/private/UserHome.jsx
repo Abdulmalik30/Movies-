@@ -29,7 +29,7 @@ const UserHome = () => {
 
   return (
     <main
-      className={`grid grid-cols-1 md:grid-cols-2  py-1 lg:grid-cols-3 gap-3  ${
+      className={`grid grid-cols-4 w-full md:grid-cols-2  py-1 lg:grid-cols-3 gap-3  ${
         movies.length ? 'h-max' : 'h-screen'
       }`}
     >

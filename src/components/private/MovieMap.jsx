@@ -11,8 +11,9 @@ const MovieMap = ({ movie }) => {
           src={`${imgPath}/${movie.poster_path}`}
           alt={`${movie.title} image`}
         />
-        <div className=' bg-[#f3e8e8] text-black p-6 w-full shadow-sm'>
+        <div className=' bg-[#f3e8e8] text-black p-6 w-full shadow-sm flex flex-col'>
           <small>{movie.title}</small>
+          <small>{movie.release_date}</small>
         </div>
       </article>
     </Link>

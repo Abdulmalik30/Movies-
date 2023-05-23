@@ -52,7 +52,7 @@ export const DataProvider = ({ children }) => {
     try {
       setIsLoading(true);
       const response = await axios.post('/register', {
-        username,
+        username: username.value,
         email,
         password,
       });
@@ -72,6 +72,7 @@ export const DataProvider = ({ children }) => {
       setIsLoading(false);
     }
   };
+
   return (
     <DataContext.Provider
       value={{

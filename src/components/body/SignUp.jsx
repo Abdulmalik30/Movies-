@@ -2,10 +2,9 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import useData from '../../hooks/useData';
 const SignUp = () => {
-  const { handleRegister } = useData();
+  const { handleRegister, email, setEmail, password, setPassword, errMsg } =
+    useData();
   const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [email, setEmail] = useState('');
   const userRef = useRef();
   const emailRef = useRef();
   const pwdRef = useRef();
@@ -54,6 +53,8 @@ const SignUp = () => {
         onSubmit={(e) => handleRegister(e)}
       >
         <div className='flex flex-col mb-4'>
+          <p className='w-full mx-auto text-red-600 p-3'>{errMsg}</p>
+
           <label htmlFor='username' className='sr-only'>
             Username
           </label>
@@ -100,8 +101,8 @@ const SignUp = () => {
           />
           {emailRef.current && emailRef.current.value.length && !validEmail ? (
             <p className='w-full mx-auto text-sm text-red-700'>
-              email can be all caps or all lowercase, hyphens and underscoresare
-              valid and the @ is required
+              email can be all caps or all lowercase, hyphens and underscores
+              are valid and the @ is required
             </p>
           ) : null}
         </div>
